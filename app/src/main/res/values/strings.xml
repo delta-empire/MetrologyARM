@@ -1,3 +1,46 @@
 <resources>
-    <string name="app_name">Metrology</string>
+    <string name="app_name">КИПиА Справочник</string>
+    <string name="tab_instrumentation">КИП</string>
+    <string name="tab_automation">АСУТП</string>
+    <string name="tab_metrology">Метрология</string>
+    <string name="tab_settings">Настройки</string>
+
+    <string-array name="scale_types">
+        <item>Линейная</item>
+        <item>Линейная-убывающая</item>
+        <item>Квадратичная</item>
+        <item>Квадратичная-убывающая</item>
+        <item>Корневая</item>
+        <item>Корневая-убывающая</item>
+    </string-array>
+
+    <string name="display_settings">Внешний вид</string>
+    <string name="theme_settings">Тема приложения</string>
+    <string name="language_settings">Язык</string>
+    <string name="application_settings">Настройки приложения</string>
+    <string name="notifications">Уведомления</string>
+    <string name="about_app">О приложении</string>
+    <string name="version">Версия 1.0.0</string>
+
+    <string-array name="theme_entries">
+        <item>Системная</item>
+        <item>Светлая</item>
+        <item>Тёмная</item>
+    </string-array>
+
+    <string-array name="theme_values">
+        <item>system</item>
+        <item>light</item>
+        <item>dark</item>
+    </string-array>
+
+    <string-array name="language_entries">
+        <item>Русский</item>
+        <item>English</item>
+    </string-array>
+
+    <string-array name="language_values">
+        <item>ru</item>
+        <item>en</item>
+    </string-array>
 </resources>
