@@ -23,10 +23,10 @@ public class AutomationFragment extends Fragment {
         RecyclerView recyclerView = view.findViewById(R.id.automation_list);
 
         List<String> items = Arrays.asList(
-                "Шкала-сигнал",
-                "Датчики давления",
-                "Датчики расхода",
-                "Датчики уровня"
+                "Шкала-сигнал"//,
+//                "Датчики давления",
+//                "Датчики расхода",
+//                "Датчики уровня"
         );
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
