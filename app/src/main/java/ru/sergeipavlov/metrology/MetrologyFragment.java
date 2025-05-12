@@ -16,47 +16,53 @@ import java.util.List;
 public class MetrologyFragment extends Fragment {
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_metrology, container, false);
 
-        // Список метрологического оборудования
-        List<String> equipmentList = Arrays.asList(
-                "Эталонные манометры",
-                "Калибраторы температуры",
-                "Поверочные установки",
-                "Эталонные весы",
-                "Измерительные мосты"
+        RecyclerView recyclerView = view.findViewById(R.id.metrology_list);
+        List<String> items = Arrays.asList(
+                "Конвертер температуры",
+                "Конвертер радиоактивности",
+                "Калибровка приборов",
+                "Поверка оборудования"
         );
 
-        // Настройка RecyclerView
-        RecyclerView recyclerView = view.findViewById(R.id.metrology_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(new MetrologyAdapter(equipmentList, position -> {
-            // Обработка выбора оборудования
-            String selectedItem = equipmentList.get(position);
-            showEquipmentDetails(selectedItem);
+        recyclerView.setAdapter(new MetrologyAdapter(items, position -> {
+            switch (position) {
+                case 0:
+                    openTemperatureConverter();
+                    break;
+                case 1:
+                    openRadioactivityConverter();
+                    break;
+                case 2:
+                    // Открытие фрагмента калибровки
+                    break;
+                case 3:
+                    // Открытие фрагмента поверки
+                    break;
+            }
         }));
 
         return view;
     }
 
-    private void showEquipmentDetails(String equipmentName) {
-        // Здесь можно открыть детальный фрагмент или Activity
-        Toast.makeText(getContext(), "Выбрано: " + equipmentName, Toast.LENGTH_SHORT).show();
-
-        // Пример перехода на детальный фрагмент:
-        /*
-        EquipmentDetailFragment fragment = EquipmentDetailFragment.newInstance(equipmentName);
+    private void openTemperatureConverter() {
         getParentFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, fragment)
-                .addToBackStack(null)
+                .replace(R.id.fragment_container, new TemperatureConverterFragment())
+                .addToBackStack("temperature_converter")
                 .commit();
-        */
     }
 
-    // Адаптер для списка оборудования
+    private void openRadioactivityConverter() {
+        getParentFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, new RadioactivityConverterFragment())
+                .addToBackStack("radioactivity_converter")
+                .commit();
+    }
+
     private static class MetrologyAdapter extends RecyclerView.Adapter<MetrologyAdapter.ViewHolder> {
 
         private final List<String> items;
